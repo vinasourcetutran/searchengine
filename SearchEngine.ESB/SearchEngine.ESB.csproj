@@ -51,6 +51,10 @@
     <Compile Include="TestHandler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RLM.Core\RLM.Core.csproj">
+      <Project>{91B9ED72-B2C7-41DC-ADDD-621FB830849A}</Project>
+      <Name>RLM.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SearchEngine.Configuration\SearchEngine.Configuration.csproj">
       <Project>{12E1CD8E-AF21-4F23-913A-8C50F4FCAE0E}</Project>
       <Name>SearchEngine.Configuration</Name>

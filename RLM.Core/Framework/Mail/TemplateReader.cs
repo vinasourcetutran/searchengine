@@ -7,7 +7,6 @@ using System.IO;
 using System.Xml;
 using System.Web;
 using RLM.Core.Framework.Utility;
-using RLM.Configuration;
 using NVelocityTemplateEngine.Interfaces;
 using NVelocityTemplateEngine;
 
@@ -112,7 +111,7 @@ namespace RLM.Core.Framework.Mail
             {
                 string template = item.Attributes["template"].Value;
                 string fileUrl = item.Attributes["fileUrl"].Value;
-                fileUrl = UrlHelper.Mappath(RLMConfiguration.Storage.ResourceFolderPath, fileUrl);// System.IO.Path.GetFullPath(fileUrl);// HttpContext.Current.Server.MapPath(fileUrl)
+                fileUrl = UrlHelper.Mappath("~/", fileUrl);// System.IO.Path.GetFullPath(fileUrl);// HttpContext.Current.Server.MapPath(fileUrl)
 
                 return GetXmlContent(fileUrl, parameters);
                 //StreamReader stream = new StreamReader(fileUrl);
@@ -134,7 +133,7 @@ namespace RLM.Core.Framework.Mail
             {
                 string template = item.Attributes["template"].Value;
                 string fileUrl = item.Attributes["fileUrl"].Value;
-                fileUrl = UrlHelper.Mappath(RLMConfiguration.Storage.ResourceFolderPath, fileUrl);// System.IO.Path.GetFullPath(fileUrl);// HttpContext.Current.Server.MapPath(fileUrl)
+                fileUrl = UrlHelper.Mappath("~/", fileUrl);// System.IO.Path.GetFullPath(fileUrl);// HttpContext.Current.Server.MapPath(fileUrl)
 
                 StreamReader stream = new StreamReader(fileUrl);
                 string result = stream.ReadToEnd();

@@ -43,6 +43,16 @@
     <Compile Include="Email\MailService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RLM.Core\RLM.Core.csproj">
+      <Project>{91B9ED72-B2C7-41DC-ADDD-621FB830849A}</Project>
+      <Name>RLM.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SearchEngine.Entity\SearchEngine.Entity.csproj">
+      <Project>{2F55DEDF-2B58-4F1B-B23B-DDB5A2512FFF}</Project>
+      <Name>SearchEngine.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
