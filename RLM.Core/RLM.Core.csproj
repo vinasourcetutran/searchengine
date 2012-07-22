@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{91B9ED72-B2C7-41DC-ADDD-621FB830849A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RLM.Core</RootNamespace>
+    <AssemblyName>RLM.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\Microsoft.Practices.EnterpriseLibrary.Caching.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="NVelocity">
+      <HintPath>..\Components\NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="NVelocityTemplateEngine">
+      <HintPath>..\Components\NVelocityTemplateEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="RLM.CMS.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\RLM.CMS.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity\BaseField.cs" />
+    <Compile Include="Entity\Delegate.cs" />
+    <Compile Include="Entity\Enum.cs" />
+    <Compile Include="Entity\IEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\ISmtp.cs" />
+    <Compile Include="Entity\Pairs.cs" />
+    <Compile Include="Entity\Size.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\SqlOperator\Enum.cs" />
+    <Compile Include="Entity\SqlOperator\SqlBetweenOperator.cs" />
+    <Compile Include="Entity\SqlOperator\SqlNotInOperator.cs" />
+    <Compile Include="Entity\SqlOperator\SqlInOperator.cs" />
+    <Compile Include="Entity\SqlOperator\SqlEqualOperator.cs" />
+    <Compile Include="Entity\SqlOperator\SqlGreaterThanOperator.cs" />
+    <Compile Include="Entity\SqlOperator\SqlLessThanOperator.cs" />
+    <Compile Include="Entity\SqlOperator\SqlNotEqualOperator.cs" />
+    <Compile Include="Entity\SqlOperator\SqlOperator.cs" />
+    <Compile Include="Entity\SqlOperator\SqlParamCollection.cs" />
+    <Compile Include="Entity\SqlOperator\SqlParamItem.cs" />
+    <Compile Include="Entity\Hash.cs" />
+    <Compile Include="Entity\Theme.cs" />
+    <Compile Include="Entity\ThemeCollection.cs" />
+    <Compile Include="Entity\UrlParam.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\UrlParams.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entity\XMLItem.cs" />
+    <Compile Include="Framework\Business\BusinessException.cs" />
+    <Compile Include="Framework\Cache\CacheHelper.cs" />
+    <Compile Include="Framework\Cache\CacheItemPolicy.cs" />
+    <Compile Include="Framework\Coding\MD5Helper.cs" />
+    <Compile Include="Framework\Constant\ExpressionPattern.cs" />
+    <Compile Include="Framework\Enum\OrderDirection.cs" />
+    <Compile Include="Framework\Interface\IJson.cs" />
+    <Compile Include="Framework\Interface\IXml.cs" />
+    <Compile Include="Framework\Log\Logger.cs" />
+    <Compile Include="Framework\Mail\EmailTemplateContent.cs" />
+    <Compile Include="Framework\Mail\MailHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Framework\Mail\Mailler.cs" />
+    <Compile Include="Framework\Mail\TemplateReader.cs" />
+    <Compile Include="Framework\Utility\CollectionHelper.cs" />
+    <Compile Include="Framework\Utility\Encode.cs" />
+    <Compile Include="Framework\Utility\EnumHelper.cs" />
+    <Compile Include="Framework\Utility\HttpUtility.cs" />
+    <Compile Include="Framework\Utility\ImageHelper.cs" />
+    <Compile Include="Framework\Utility\IOHelper.cs" />
+    <Compile Include="Framework\Utility\JavascriptUtility.cs" />
+    <Compile Include="Framework\Utility\NumericHelp.cs" />
+    <Compile Include="Framework\Utility\PagingHelper.cs" />
+    <Compile Include="Framework\Utility\RandomHelper.cs" />
+    <Compile Include="Framework\Utility\Reflection.cs" />
+    <Compile Include="Framework\Utility\RegularExpressionHelper.cs" />
+    <Compile Include="Framework\Utility\RequestHelper.cs" />
+    <Compile Include="Framework\Utility\StringHelper.cs" />
+    <Compile Include="Framework\Utility\TemplateHelper.cs" />
+    <Compile Include="Framework\Utility\ThemeHelper.cs" />
+    <Compile Include="Framework\Utility\UrlHelper.cs" />
+    <Compile Include="Framework\Utility\Validator.cs" />
+    <Compile Include="Framework\Utility\XmlHelper.cs" />
+    <Compile Include="Framework\Workflow\WorflowActivity.cs" />
+    <Compile Include="HttpHandler\BaseHttpHandler.cs" />
+    <Compile Include="Permission\Basic\IAuthorization.cs" />
+    <Compile Include="Permission\Basic\IEntity.cs" />
+    <Compile Include="Permission\Basic\IResource.cs" />
+    <Compile Include="Permission\Basic\PermissionAction.cs" />
+    <Compile Include="Permission\Basic\PermissionHelper.cs" />
+    <Compile Include="Permission\Basic\PermissionType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\UI\AbstractValidationRule.cs" />
+    <Compile Include="Web\UI\BaseDropdownList.cs" />
+    <Compile Include="Web\UI\BaseMasterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BasePager.cs" />
+    <Compile Include="Web\UI\BaseUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UI\BreadCrumb.cs" />
+    <Compile Include="Web\UI\Calendar.cs" />
+    <Compile Include="Web\UI\CustomBasePager.cs" />
+    <Compile Include="Web\UI\CustomHyperLinkPager.cs" />
+    <Compile Include="Web\UI\CustomLinkButtonPager.cs" />
+    <Compile Include="Web\UI\EmailAddressRule.cs" />
+    <Compile Include="Web\UI\HyperLink.cs" />
+    <Compile Include="Web\UI\HyperLinkPager.cs" />
+    <Compile Include="Web\UI\Image.cs" />
+    <Compile Include="Web\UI\IPage.cs" />
+    <Compile Include="Web\UI\IValidationRule.cs" />
+    <Compile Include="Web\UI\JavaScript.cs" />
+    <Compile Include="Web\UI\Label.cs" />
+    <Compile Include="Web\UI\Link.cs" />
+    <Compile Include="Web\UI\Pager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Web\UI\PagerEventArgs.cs" />
+    <Compile Include="Web\UI\PatternMatchedRule.cs" />
+    <Compile Include="Web\UI\Repeater.cs" />
+    <Compile Include="Web\UI\RepeaterRenderHandler.cs" />
+    <Compile Include="Web\UI\StyleSheet.cs" />
+    <Compile Include="Web\UI\ValidationError.cs" />
+    <Compile Include="Web\URLRewrite\BaseModuleRewriter.cs" />
+    <Compile Include="Web\URLRewrite\ModuleRewriter.cs" />
+    <Compile Include="Web\URLRewrite\RewriterConfigSerializerSectionHandler.cs" />
+    <Compile Include="Web\URLRewrite\RewriterConfiguration.cs" />
+    <Compile Include="Web\URLRewrite\RewriterFactoryHandler.cs" />
+    <Compile Include="Web\URLRewrite\RewriterRule.cs" />
+    <Compile Include="Web\URLRewrite\RewriterRuleCollection.cs" />
+    <Compile Include="Web\URLRewrite\RewriterUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Framework\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RLM.Configuration\RLM.Configuration.csproj">
+      <Project>{2B712C96-C336-4B2D-9686-AC3CF82C3F03}</Project>
+      <Name>RLM.Configuration</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
