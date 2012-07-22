@@ -1,0 +1,36 @@
+2012-07-19 00:58:41,033 [1] FATAL NServiceBus.Hosting.GenericHost [(null)] <(null)> - System.ArgumentException: Problem loading message assembly: SearchEngine.Entity ---> System.IO.FileNotFoundException: Could not load file or assembly 'SearchEngine.Entity' or one of its dependencies. The system cannot find the file specified.
+   at System.Reflection.RuntimeAssembly._nLoad(AssemblyName fileName, String codeBase, Evidence assemblySecurity, RuntimeAssembly locationHint, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoadAssemblyName(AssemblyName assemblyRef, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection, Boolean suppressSecurityChecks)
+   at System.Reflection.RuntimeAssembly.InternalLoad(String assemblyString, Evidence assemblySecurity, StackCrawlMark& stackMark, Boolean forIntrospection)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NServiceBus.Unicast.Config.ConfigUnicastBus.ConfigureBusProperties(UnicastBusConfig unicastConfig)
+   --- End of inner exception stack trace ---
+   at NServiceBus.Unicast.Config.ConfigUnicastBus.ConfigureBusProperties(UnicastBusConfig unicastConfig)
+   at NServiceBus.Unicast.Config.ConfigUnicastBus.RegisterMessageOwnersAndBusAddress()
+   at NServiceBus.Unicast.Config.ConfigUnicastBus.Configure(Configure config)
+   at NServiceBus.ConfigureUnicastBus.UnicastBus(Configure config)
+   at NServiceBus.Hosting.Windows.Roles.Handlers.ClientRoleHandler.ConfigureRole(IConfigureThisEndpoint specifier) in d:\BuildAgent-03\work\nsb.master3\src\hosting\NServiceBus.Hosting.Windows\Roles\Handlers\ClientRoleHandler.cs:line 23
+   at NServiceBus.Hosting.Roles.RoleManager.ConfigureBusForEndpoint(IConfigureThisEndpoint specifier) in d:\BuildAgent-03\work\nsb.master3\src\hosting\NServiceBus.Hosting\Roles\RoleManager.cs:line 52
+   at NServiceBus.Hosting.GenericHost.PerformConfiguration() in d:\BuildAgent-03\work\nsb.master3\src\hosting\NServiceBus.Hosting\GenericHost.cs:line 120
+   at NServiceBus.Hosting.GenericHost.Start() in d:\BuildAgent-03\work\nsb.master3\src\hosting\NServiceBus.Hosting\GenericHost.cs:line 28
+2012-07-19 01:00:00,450 [1] INFO  NServiceBus.Hosting.Roles.RoleManager [(null)] <(null)> - Role NServiceBus.AsA_Client configured
+2012-07-19 01:00:00,646 [1] INFO  NServiceBus.Host [(null)] <(null)> - Going to activate profile: NServiceBus.Production, NServiceBus.Host, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c
+2012-07-19 01:00:14,903 [1] INFO  NServiceBus.Licensing [(null)] <(null)> - Checking available license...
+2012-07-19 01:00:14,907 [1] INFO  NServiceBus.Licensing [(null)] <(null)> - Could not find license file: D:\Project\SearchEngine\SearchEngine.Test\bin\Debug\License\License.xml
+2012-07-19 01:00:14,942 [1] WARN  NServiceBus.Licensing [(null)] <(null)> - No valid license file was found. The host will be limited to 1 worker thread.
+2012-07-19 01:00:16,059 [1] WARN  NServiceBus.Utils.MsmqUtilities [(null)] <(null)> - Queue tutran-pc\private$\searchengine.test does not exist.
+2012-07-19 01:02:55,875 [1] INFO  NServiceBus.Hosting.Roles.RoleManager [(null)] <(null)> - Role NServiceBus.AsA_Client configured
+2012-07-19 01:02:56,090 [1] INFO  NServiceBus.Host [(null)] <(null)> - Going to activate profile: NServiceBus.Production, NServiceBus.Host, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c
+2012-07-19 01:03:05,325 [1] INFO  NServiceBus.Licensing [(null)] <(null)> - Checking available license...
+2012-07-19 01:03:05,329 [1] INFO  NServiceBus.Licensing [(null)] <(null)> - Could not find license file: D:\Project\SearchEngine\SearchEngine.Test\bin\Debug\License\License.xml
+2012-07-19 01:03:05,362 [1] WARN  NServiceBus.Licensing [(null)] <(null)> - No valid license file was found. The host will be limited to 1 worker thread.
+2012-07-19 01:12:48,178 [1] INFO  NServiceBus.Hosting.Roles.RoleManager [(null)] <(null)> - Role NServiceBus.AsA_Client configured
+2012-07-19 01:12:48,385 [1] INFO  NServiceBus.Host [(null)] <(null)> - Going to activate profile: NServiceBus.Production, NServiceBus.Host, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c
+2012-07-19 01:12:59,561 [1] INFO  NServiceBus.Licensing [(null)] <(null)> - Checking available license...
+2012-07-19 01:12:59,567 [1] INFO  NServiceBus.Licensing [(null)] <(null)> - Could not find license file: D:\Project\SearchEngine\SearchEngine.Test\bin\Debug\License\License.xml
+2012-07-19 01:12:59,611 [1] WARN  NServiceBus.Licensing [(null)] <(null)> - No valid license file was found. The host will be limited to 1 worker thread.
+2012-07-19 01:14:19,674 [1] INFO  NServiceBus.Hosting.Roles.RoleManager [(null)] <(null)> - Role NServiceBus.AsA_Client configured
+2012-07-19 01:14:19,901 [1] INFO  NServiceBus.Host [(null)] <(null)> - Going to activate profile: NServiceBus.Production, NServiceBus.Host, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c
+2012-07-19 01:14:28,368 [1] INFO  NServiceBus.Licensing [(null)] <(null)> - Checking available license...
+2012-07-19 01:14:28,372 [1] INFO  NServiceBus.Licensing [(null)] <(null)> - Could not find license file: D:\Project\SearchEngine\SearchEngine.Test\bin\Debug\License\License.xml
+2012-07-19 01:14:28,380 [1] WARN  NServiceBus.Licensing [(null)] <(null)> - No valid license file was found. The host will be limited to 1 worker thread.

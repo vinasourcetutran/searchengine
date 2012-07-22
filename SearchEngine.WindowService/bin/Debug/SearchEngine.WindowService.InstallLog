@@ -1,0 +1,24 @@
+﻿Uninstalling assembly 'D:\Project\SearchEngine\SearchEngine.WindowService\bin\Debug\SearchEngine.WindowService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Project\SearchEngine\SearchEngine.WindowService\bin\Debug\SearchEngine.WindowService.InstallLog
+   assemblypath = D:\Project\SearchEngine\SearchEngine.WindowService\bin\Debug\SearchEngine.WindowService.exe
+Removing EventLog source SearchEngine Winservice.
+Warning: The source SearchEngine Winservice is not registered on the local machine.
+Service SearchEngine Winservice is being removed from the system...
+An exception occurred during the uninstallation of the System.ServiceProcess.ServiceInstaller installer.
+System.ComponentModel.Win32Exception: The specified service does not exist as an installed service
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.
+Installing assembly 'D:\Project\SearchEngine\SearchEngine.WindowService\bin\Debug\SearchEngine.WindowService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Project\SearchEngine\SearchEngine.WindowService\bin\Debug\SearchEngine.WindowService.InstallLog
+   assemblypath = D:\Project\SearchEngine\SearchEngine.WindowService\bin\Debug\SearchEngine.WindowService.exe
+Installing service SearchEngine Winservice...
+Service SearchEngine Winservice has been successfully installed.
+Creating EventLog source SearchEngine Winservice in log Application...
+Committing assembly 'D:\Project\SearchEngine\SearchEngine.WindowService\bin\Debug\SearchEngine.WindowService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Project\SearchEngine\SearchEngine.WindowService\bin\Debug\SearchEngine.WindowService.InstallLog
+   assemblypath = D:\Project\SearchEngine\SearchEngine.WindowService\bin\Debug\SearchEngine.WindowService.exe
