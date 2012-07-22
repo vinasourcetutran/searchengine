@@ -1,0 +1,1 @@
+installutil /u SearchEngine.WindowService.exe
