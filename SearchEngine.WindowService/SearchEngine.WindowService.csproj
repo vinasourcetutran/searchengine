@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackgroundServiceParam.cs" />
     <Compile Include="BackgroundServiceQueue.cs" />
     <Compile Include="Installer.cs">
       <SubType>Component</SubType>
@@ -102,7 +103,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowServiceHelper.cs" />
     <Compile Include="WorkflowBuilder.cs" />
-    <Compile Include="Workflow\TestActivity.cs" />
+    <Compile Include="Workflow\ConsoleReader.cs" />
+    <Compile Include="Workflow\ConsoleWriter.cs" />
+    <Compile Include="Workflow\TestActivity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Workflow\WorkflowTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RLM.Core\RLM.Core.csproj">
@@ -127,9 +133,20 @@
     <None Include="bin\Debug\Config\Configuration.config" />
     <None Include="bin\Debug\entlib.config" />
     <None Include="Config\Configuration.config" />
-    <None Include="entlib.config" />
+    <None Include="entlib.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Config\BaseDataAccessConfig.xml" />
+    <Content Include="Config\WorkflowConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\DataAccessConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Test\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

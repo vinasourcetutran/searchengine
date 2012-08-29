@@ -10,9 +10,28 @@ using System.Reflection;
 namespace RLM.Core.Framework.Utility
 {
     using System.Collections;
+    using System.Xml.Serialization;
+    using System.IO;
 
     public class XmlHelper
     {
+
+        #region Data config
+        public static T Deserialize<T>(string path)
+        {
+            T configs = default(T);
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            
+            // A FileStream is needed to read the XML document.
+            using (XmlReader reader = XmlReader.Create(path))
+            {
+                configs = (T)serializer.Deserialize(reader);
+            }
+
+            return configs;
+        }
+
+        #endregion
         #region Xml navigator
         public static IList<XmlNode> GetXmlNodesByXPath(XmlDocument xmlDoc, string xpath)
         {

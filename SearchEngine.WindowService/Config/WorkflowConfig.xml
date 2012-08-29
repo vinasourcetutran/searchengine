@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BackgroundServiceWorkflows xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BackgroundServiceWorkflow Enable="true" MaxThread="1">
+    <EntityClassName>SearchEngine.Bot.Entity.TestEntity</EntityClassName>
+    <Workflow>SearchEngine.WindowService.Workflow.WorkflowTest,SearchEngine.WindowService</Workflow>
+  </BackgroundServiceWorkflow>
+</BackgroundServiceWorkflows>

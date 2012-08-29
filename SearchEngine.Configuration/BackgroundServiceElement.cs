@@ -9,6 +9,23 @@ namespace SearchEngine.Configuration
     public class BackgroundServiceElement : ConfigurationElement
     {
         /// <summary>
+        /// Physical path to workflow config file for background service
+        /// </summary>
+        /// 
+        [ConfigurationProperty("workflowConfigFile", DefaultValue = "")]
+        public string WorkflowConfigFile {
+            get { return (string)this["workflowConfigFile"]; }
+        }
+
+        /// <summary>
+        /// Config file for data access
+        /// </summary>
+        [ConfigurationProperty("dataAccessConfigFile", DefaultValue = "")]
+        public string DataAccessConfigFile {
+            get { return (string)this["dataAccessConfigFile"]; }
+        }
+
+        /// <summary>
         /// Number of paralle thread process data in background
         /// </summary>
         [ConfigurationProperty("maxThread", DefaultValue = "1")]

@@ -6,6 +6,7 @@ using log4net;
 using log4net.Config;
 using System.Reflection;
 
+
 namespace RLM.Core.Framework.Log
 {
     public class Logger

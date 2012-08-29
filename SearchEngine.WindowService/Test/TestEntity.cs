@@ -4,39 +4,39 @@ using System.Linq;
 using System.Text;
 using RLM.Core.Entity;
 
-namespace SearchEngine.Bot.Entity
+namespace SearchEngine.WindowService.Test
 {
-    [Serializable]
-    public class TestEntity:BaseEntity
+    public class TestEntity:IEntity
     {
         #region Variables
         #endregion
 
         #region Properties
+        public string Name { get; set; }
+        #endregion
+
+        #region Constructor
         #endregion
 
         #region Public methods
-        public string Name { get; set; }
+
         #endregion
 
         #region Private methods
         #endregion
-
-        public override string EntityId
+        public string EntityId
         {
             get { throw new NotImplementedException(); }
         }
 
-        public override string EntityName
+        public string EntityName
         {
-            get { return this.Name; }
+            get { return Name; }
         }
 
-        public override string EntityType
+        public string EntityType
         {
             get { throw new NotImplementedException(); }
         }
-
-        
     }
 }

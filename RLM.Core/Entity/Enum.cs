@@ -5,6 +5,14 @@ using System.Text;
 
 namespace RLM.Core.Entity
 {
+    public enum ConfigFieldMessageQueue
+    {
+        QueuePath,
+        IsTransactional,
+        IsAutoCreateQueueIfNotExist,
+        MaxQueueSize
+    }
+
     public enum SystemMode
     {
         Web,

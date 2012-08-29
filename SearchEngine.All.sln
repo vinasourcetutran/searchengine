@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchEngine.ESB", "SearchE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RLM.Core", "RLM.Core\RLM.Core.csproj", "{91B9ED72-B2C7-41DC-ADDD-621FB830849A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchEngine.Test.ConsoleApp", "SearchEngine.Test.Console\SearchEngine.Test.ConsoleApp.csproj", "{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,16 @@ Global
 		{91B9ED72-B2C7-41DC-ADDD-621FB830849A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{91B9ED72-B2C7-41DC-ADDD-621FB830849A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{91B9ED72-B2C7-41DC-ADDD-621FB830849A}.Release|x86.ActiveCfg = Release|Any CPU
+		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Debug|x86.ActiveCfg = Debug|x86
+		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Debug|x86.Build.0 = Debug|x86
+		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Release|Any CPU.ActiveCfg = Release|x86
+		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Release|Mixed Platforms.Build.0 = Release|x86
+		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Release|x86.ActiveCfg = Release|x86
+		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

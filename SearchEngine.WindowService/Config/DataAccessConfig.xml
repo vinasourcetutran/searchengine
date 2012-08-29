@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataAccessConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DataAccessConfigItem IsReader="true" IsWriter="false" Enable="true">
+    <EntityClassName>SearchEngine.Bot.Entity.TestEntity</EntityClassName>
+    <DataWriter>DataWriter</DataWriter>
+    <DataReader>SearchEngine.WindowService.Workflow.ConsoleReader</DataReader>
+    <Param InstanceClassName="RLM.Core.Framework.Data.Config.ConfigHash">
+      <Value>
+        <![CDATA[IsAutoCreateQueueIfNotExist::True;;IsTransactional::True;;QueuePath::.\private$\receiver1;;MaxQueueSize::10]]>
+      </Value>
+    </Param>
+  </DataAccessConfigItem>
+</DataAccessConfigs>

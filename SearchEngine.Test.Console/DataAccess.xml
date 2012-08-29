@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataAccessConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DataAccessConfigItem IsReader="true" IsWriter="true">
+    <EntityClassName>EntityClassName</EntityClassName>
+    <DataWriter>DataWriter</DataWriter>
+    <DataReader>DataReader</DataReader>
+    <Param InstanceClassName="test name">
+      <Value>param value</Value>
+    </Param>
+  </DataAccessConfigItem>
+</DataAccessConfigs>

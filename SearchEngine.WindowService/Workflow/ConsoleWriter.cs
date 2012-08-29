@@ -2,29 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RLM.Core.Framework.Log;
+using RLM.Core.Framework.Data.MessageQueue;
+using RLM.Core.Entity;
+using RLM.Core.Framework.Data;
 
 namespace SearchEngine.WindowService.Workflow
 {
-    public class TestActivity : RLM.Core.Framework.Workflow.WorflowActivity<RLM.Core.Entity.IEntity>
+    public class ConsoleWriter : BaseDataWriter<IEntity, string>
     {
         #region Variables
         #endregion
 
         #region Properties
+
         #endregion
 
         #region Constructor
+        ConsoleWriter(IConfigurable config) : base(config) { }
         #endregion
 
         #region Public methods
-        public override bool IsValid()
+        public override void InsertOrUpdate(IEntity item)
         {
-            return true;
-        }
-        protected override void Excute()
-        {
-            Logger.Info("item {0} was processed at {1}.",this.Item.EntityName, DateTime.Now.ToString());
+            Console.WriteLine(item.EntityName);
         }
         #endregion
 

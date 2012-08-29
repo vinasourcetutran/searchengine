@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RLM.Core</RootNamespace>
     <AssemblyName>RLM.Core</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -80,6 +80,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -91,7 +92,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\BackgroundServiceWorkflow.cs" />
+    <Compile Include="Entity\BackgroundServiceWorkflows.cs" />
+    <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\BaseField.cs" />
+    <Compile Include="Entity\DataAccessConfigItem.cs" />
+    <Compile Include="Entity\DataAccessConfigItemParam.cs" />
+    <Compile Include="Entity\DataAccessConfigs.cs" />
     <Compile Include="Entity\Delegate.cs" />
     <Compile Include="Entity\Enum.cs" />
     <Compile Include="Entity\IEntity.cs">
@@ -128,6 +135,14 @@
     <Compile Include="Framework\Cache\CacheItemPolicy.cs" />
     <Compile Include="Framework\Coding\MD5Helper.cs" />
     <Compile Include="Framework\Constant\ExpressionPattern.cs" />
+    <Compile Include="Framework\Data\BaseDataWriter.cs" />
+    <Compile Include="Framework\Data\Config\ConfigHash.cs" />
+    <Compile Include="Framework\Data\BaseDataReader.cs" />
+    <Compile Include="Framework\Data\IConfigurable.cs" />
+    <Compile Include="Framework\Data\IDataReader.cs" />
+    <Compile Include="Framework\Data\IDataWriter.cs" />
+    <Compile Include="Framework\Data\MessageQueue\MessageQueueReader.cs" />
+    <Compile Include="Framework\Data\MessageQueue\MessageQueueWriter.cs" />
     <Compile Include="Framework\Enum\OrderDirection.cs" />
     <Compile Include="Framework\Interface\IJson.cs" />
     <Compile Include="Framework\Interface\IXml.cs" />
@@ -138,6 +153,7 @@
     </Compile>
     <Compile Include="Framework\Mail\Mailler.cs" />
     <Compile Include="Framework\Mail\TemplateReader.cs" />
+    <Compile Include="Framework\Utility\ClassHelper.cs" />
     <Compile Include="Framework\Utility\CollectionHelper.cs" />
     <Compile Include="Framework\Utility\Encode.cs" />
     <Compile Include="Framework\Utility\EnumHelper.cs" />
@@ -157,6 +173,7 @@
     <Compile Include="Framework\Utility\UrlHelper.cs" />
     <Compile Include="Framework\Utility\Validator.cs" />
     <Compile Include="Framework\Utility\XmlHelper.cs" />
+    <Compile Include="Framework\Workflow\IWorkflow.cs" />
     <Compile Include="Framework\Workflow\WorflowActivity.cs" />
     <Compile Include="HttpHandler\BaseHttpHandler.cs" />
     <Compile Include="Permission\Basic\IAuthorization.cs" />
@@ -210,9 +227,7 @@
     <Compile Include="Web\URLRewrite\RewriterRuleCollection.cs" />
     <Compile Include="Web\URLRewrite\RewriterUtils.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Framework\Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>

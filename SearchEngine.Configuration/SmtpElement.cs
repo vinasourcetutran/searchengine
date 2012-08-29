@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Configuration;
-using SearchEngine.Bot.Entity.Mail;
+using RLM.Core.Entity;
 
 namespace SearchEngine.Configuration
 {
@@ -58,5 +58,30 @@ namespace SearchEngine.Configuration
             get { return (string)this["defaultBCC"]; }
         }
         #endregion
+
+
+        string ISmtp.DefaultBCC
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        string ISmtp.DefaultCC
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

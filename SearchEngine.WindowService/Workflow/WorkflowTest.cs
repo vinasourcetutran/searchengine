@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using RLM.Core.Framework.Log;
+using RLM.Core.Entity;
+using RLM.Core.Framework.Workflow;
 
 namespace SearchEngine.WindowService.Workflow
 {
-    public class TestActivity : RLM.Core.Framework.Workflow.WorflowActivity<RLM.Core.Entity.IEntity>
+    public class WorkflowTest : IWorkflow<IEntity>
     {
         #region Variables
         #endregion
@@ -15,20 +16,21 @@ namespace SearchEngine.WindowService.Workflow
         #endregion
 
         #region Constructor
+        public WorkflowTest() { }
         #endregion
 
         #region Public methods
-        public override bool IsValid()
+        public WorflowActivity<IEntity> BuildWorkflow(IEntity item)
         {
-            return true;
-        }
-        protected override void Excute()
-        {
-            Logger.Info("item {0} was processed at {1}.",this.Item.EntityName, DateTime.Now.ToString());
+            WorflowActivity<IEntity> activity = new WorflowActivity<IEntity>();
+            activity.AddChild(new TestActivity());
+            ///TO DO
+            return activity;
         }
         #endregion
 
         #region Private methods
         #endregion
+        
     }
 }
