@@ -31,7 +31,7 @@ namespace SearchEngine.WindowService
         #region Public methods
         public static void InitDataReaderAndWriter()
         {
-            var forceLoad = typeof(BaseDataReader<BaseEntity, string>);
+            //var forceLoad = typeof(BaseDataReader<BaseEntity, string>);
             if (DataReader == null) { DataReader = new Dictionary<string, IDataReader<BaseEntity, string>>(5); }
             if (DataWriter == null) { DataWriter = new Dictionary<string, IDataWriter<BaseEntity, string>>(5); }
 
@@ -49,14 +49,14 @@ namespace SearchEngine.WindowService
                 }
                 if(item.IsReader)
                 {
-                    
-                    BaseDataReader<BaseEntity, string> reader = (BaseDataReader<BaseEntity, string>)Activator.CreateInstance(Type.GetType(item.DataReader), config);
+
+                    IDataReader<BaseEntity, string> reader = Activator.CreateInstance(Type.GetType(item.DataReader), config) as IDataReader<BaseEntity, string>;
                     DataReader[item.EntityClassName]= reader;
                 }
 
                 if(item.IsWriter)
                 {
-                    BaseDataWriter<BaseEntity, string> writer = (BaseDataWriter<BaseEntity, string>)Activator.CreateInstance(Type.GetType(item.DataWriter), config);
+                    IDataWriter<BaseEntity, string> writer = (IDataWriter<BaseEntity, string>)Activator.CreateInstance(Type.GetType(item.DataWriter), config);
                     DataWriter[item.EntityClassName]= writer;
                 }
             }

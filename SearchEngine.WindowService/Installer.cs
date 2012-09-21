@@ -21,7 +21,7 @@ namespace SearchEngine.WindowService
             ServiceInstaller si = new ServiceInstaller();
             si.StartType = ServiceStartMode.Manual;
 
-            si.ServiceName = "SearchEngine Winservice";
+            si.ServiceName = "RLM: SearchEngine Winservice";
 
             Installers.AddRange(new Installer[] { spi, si });
         }

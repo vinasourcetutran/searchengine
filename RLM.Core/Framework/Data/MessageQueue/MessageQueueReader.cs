@@ -13,7 +13,7 @@ namespace RLM.Core.Framework.Data.MessageQueue
         IConfigurable config;
         System.Messaging.MessageQueue messageQueue;
         object getObj = new object();
-        Queue<EntityType> queue;
+        Queue<QueueEntity> queue;
         #endregion
 
         #region Constructor
@@ -45,13 +45,13 @@ namespace RLM.Core.Framework.Data.MessageQueue
             if (this.queue.Count <= 0) { return default(EntityType); }
             lock (getObj)
             {
-                EntityType entity=this.queue.Dequeue();
+                QueueEntity entity = this.queue.Dequeue();
                 if (this.queue.Count < this.MaxQueueSize && !this.IsWaitingForMessage)
                 {
                     this.messageQueue.BeginReceive();
                     this.IsWaitingForMessage = true;
                 }
-                return entity;
+                return entity.GetData<EntityType>();
             }
             
         }
@@ -71,10 +71,10 @@ namespace RLM.Core.Framework.Data.MessageQueue
             int.TryParse(config.GetKey(ConfigFieldMessageQueue.MaxQueueSize.ToString(),"").ToString(), out maxQueueSize);
             this.MaxQueueSize = maxQueueSize;
 
-            this.queue = new Queue<EntityType>();
+            this.queue = new Queue<QueueEntity>();
 
             this.messageQueue = new System.Messaging.MessageQueue(this.QueuePath);
-            this.messageQueue.Formatter = new XmlMessageFormatter(new[] { typeof(EntityType) });
+            this.messageQueue.Formatter = new XmlMessageFormatter(new[] { typeof(QueueEntity) });
             this.messageQueue.ReceiveCompleted  +=new ReceiveCompletedEventHandler(messageQueue_ReceiveCompleted);
             this.messageQueue.BeginReceive();
             this.IsWaitingForMessage = true;
@@ -82,7 +82,7 @@ namespace RLM.Core.Framework.Data.MessageQueue
         private void messageQueue_ReceiveCompleted(object sender, ReceiveCompletedEventArgs e)
         {
             this.IsWaitingForMessage = false;
-            EntityType entity = (EntityType)e.Message.Body;
+            QueueEntity entity = (QueueEntity)e.Message.Body;
             this.queue.Enqueue(entity);
             if (this.queue.Count < this.MaxQueueSize && !this.IsWaitingForMessage)
             {

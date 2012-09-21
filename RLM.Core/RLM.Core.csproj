@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="Entity\ISmtp.cs" />
     <Compile Include="Entity\Pairs.cs" />
+    <Compile Include="Entity\QueueEntity.cs" />
     <Compile Include="Entity\Size.cs">
       <SubType>Code</SubType>
     </Compile>

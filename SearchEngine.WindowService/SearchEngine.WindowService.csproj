@@ -142,7 +142,9 @@
     <Content Include="Config\WorkflowConfig.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Config\DataAccessConfig.xml" />
+    <Content Include="Config\DataAccessConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Test\" />

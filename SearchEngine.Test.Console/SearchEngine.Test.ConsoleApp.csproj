@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestClass.cs" />
     <Compile Include="TestDataReader.cs" />
     <Compile Include="TestHelper.cs" />
   </ItemGroup>
@@ -54,9 +55,29 @@
       <Project>{91B9ED72-B2C7-41DC-ADDD-621FB830849A}</Project>
       <Name>RLM.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SearchEngine.Configuration\SearchEngine.Configuration.csproj">
+      <Project>{12E1CD8E-AF21-4F23-913A-8C50F4FCAE0E}</Project>
+      <Name>SearchEngine.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SearchEngine.Entity\SearchEngine.Entity.csproj">
       <Project>{2F55DEDF-2B58-4F1B-B23B-DDB5A2512FFF}</Project>
       <Name>SearchEngine.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SearchEngine.ESB\SearchEngine.ESB.csproj">
+      <Project>{10999A22-37FE-4BD5-868F-5478B055605F}</Project>
+      <Name>SearchEngine.ESB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SearchEngine.Service\SearchEngine.Service.csproj">
+      <Project>{7518282A-8FB2-430C-9E56-4DADC42AC256}</Project>
+      <Name>SearchEngine.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SearchEngine.WindowService\SearchEngine.WindowService.csproj">
+      <Project>{2D4ED962-9F5A-4CBC-AF9F-5B4B196A37D9}</Project>
+      <Name>SearchEngine.WindowService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SearchEngine\SearchEngine.csproj">
+      <Project>{96E9C9C4-1CA7-4656-A23A-704812E9DA22}</Project>
+      <Name>SearchEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

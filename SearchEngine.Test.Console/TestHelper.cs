@@ -28,10 +28,10 @@ namespace SearchEngine.Test.ConsoleApp
 
             //Thread th = new Thread(ReadFromQueue);
             //th.Start();
-
-            while (true)
+            string text="";
+            while (text!="exit")
             {
-                string text = Console.ReadLine();
+                text = Console.ReadLine();
                 writer.InsertOrUpdate(new TestEntity() { Name=text+ DateTime.Now.ToString()});
             }
         }
@@ -48,8 +48,8 @@ namespace SearchEngine.Test.ConsoleApp
 
             while (true)
             {
-                TestEntity entity = reader.Get();
-                Console.WriteLine("Get from queue:"+ (entity!=null?entity.Name: "Null"));
+                BaseEntity entity = reader.Get();
+                Console.WriteLine("Get from queue:"+ (entity!=null?entity.EntityName: "Null"));
                 Thread.Sleep(2000);
             }
         }
@@ -127,7 +127,21 @@ namespace SearchEngine.Test.ConsoleApp
         {
             string dataReader = "";
             MessageQueueReader<TestEntity> reader = new MessageQueueReader<SearchEngine.Bot.Entity.TestEntity>(new ConfigHash());
-            BaseDataReader<BaseEntity, string> t = reader;
+            IDataReader<BaseEntity, string> t = reader as IDataReader<BaseEntity, string>;
+        }
+
+        internal static void CreateDataReader()
+        {
+
+            IConfigurable config = null;
+            config = ClassHelper.CreateInstance<IConfigurable>("RLM.Core.Framework.Data.Config.ConfigHash");
+                config.FromString(@"IsAutoCreateQueueIfNotExist::True;;IsTransactional::True;;QueuePath::.\private$\receiver1;;MaxQueueSize::10");
+
+                Type type=Type.ReflectionOnlyGetType("SearchEngine.Bot.Entity.TestEntity",false, true);
+
+
+                IDataReader<BaseEntity, string> reader = Activator.CreateInstance(Type.GetType("SearchEngine.WindowService.Workflow.ConsoleReader,SearchEngine.WindowService"), config) as IDataReader<BaseEntity, string>;
+                Console.WriteLine("Init data reader:{0}", reader==null?"Null":"Not null");
         }
     }
 }

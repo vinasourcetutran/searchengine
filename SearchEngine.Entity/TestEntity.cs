@@ -36,7 +36,6 @@ namespace SearchEngine.Bot.Entity
         {
             get { throw new NotImplementedException(); }
         }
-
         
     }
 }

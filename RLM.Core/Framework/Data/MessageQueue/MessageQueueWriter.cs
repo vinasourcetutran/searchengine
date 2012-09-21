@@ -14,7 +14,7 @@ namespace RLM.Core.Framework.Data.MessageQueue
         IConfigurable config;
         System.Messaging.MessageQueue messageQueue;
         object getObj = new object();
-        Queue<EntityType> queue;
+        Queue<QueueEntity> queue;
         #endregion
 
         #region Constructor
@@ -73,7 +73,9 @@ namespace RLM.Core.Framework.Data.MessageQueue
         {
             System.Messaging.Message msg = new System.Messaging.Message();
 
-            msg.Body = item;
+            QueueEntity dataItem = new QueueEntity();
+            dataItem.SetData<EntityType>(item);
+            msg.Body = dataItem;
 
 
             Type type = typeof(EntityType);
@@ -108,7 +110,7 @@ namespace RLM.Core.Framework.Data.MessageQueue
             }
 
             this.messageQueue = new System.Messaging.MessageQueue(this.QueuePath);
-            this.messageQueue.Formatter = new XmlMessageFormatter(new[] { typeof(EntityType) });
+            this.messageQueue.Formatter = new XmlMessageFormatter(new[] { typeof(QueueEntity) });
         }
         #endregion
 
