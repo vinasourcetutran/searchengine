@@ -11,16 +11,18 @@ namespace SearchEngine.Test.ConsoleApp
         {
             try
             {
+                TestHelper.TestDatabaseReaderQueue();
                 //Cmd<MyContext> cmd = new Cmd<MyContext>();
 
                 //ICmd<Context> foo = cmd as ICmd<Context>;
                 //Console.WriteLine(foo.GetName());
-                TestHelper.CreateDataReader();
+                //TestHelper.CreateDataReader();
                 //TestHelper.TestMessageQueue();
                 //TestHelper.TestDataConfig();
                 //TestHelper.TestSerializeDataConfig();
                 //TestHelper.TestWorkflow();
-                //TestHelper.ReadFromQueue();
+               // TestHelper.ReadFromQueue();
+                //TestHelper.AddNewHtmlPage();
 
             }
             catch (Exception ex)

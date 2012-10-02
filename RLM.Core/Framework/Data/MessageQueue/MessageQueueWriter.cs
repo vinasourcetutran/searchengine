@@ -8,13 +8,13 @@ using RLM.Core.Entity;
 namespace RLM.Core.Framework.Data.MessageQueue
 {
 
-    public class MessageQueueWriter<EntityType> : BaseDataWriter<EntityType, string>
+    public class MessageQueueWriter<EntityType> : BaseDataWriter<EntityType> where EntityType:IEntity
     {
         #region Variable
         IConfigurable config;
         System.Messaging.MessageQueue messageQueue;
         object getObj = new object();
-        Queue<QueueEntity> queue;
+        Queue<EntityType> queue;
         #endregion
 
         #region Constructor
@@ -73,13 +73,11 @@ namespace RLM.Core.Framework.Data.MessageQueue
         {
             System.Messaging.Message msg = new System.Messaging.Message();
 
-            QueueEntity dataItem = new QueueEntity();
-            dataItem.SetData<EntityType>(item);
-            msg.Body = dataItem;
+            msg.Body = item;
 
 
             Type type = typeof(EntityType);
-            msg.Label = string.Format("{0}.{1}", type.Namespace, type.Name);
+            msg.Label = string.Format("{0} / {1} / {2}", item.EntityType, item.EntityId, item.EntityName);
             if (transaction != null)
             {
                 this.messageQueue.Send(msg, transaction);
@@ -90,10 +88,6 @@ namespace RLM.Core.Framework.Data.MessageQueue
             }
         }
 
-        public override bool Delete(string id)
-        {
-            return true;
-        }
 
         #endregion
 
@@ -110,7 +104,7 @@ namespace RLM.Core.Framework.Data.MessageQueue
             }
 
             this.messageQueue = new System.Messaging.MessageQueue(this.QueuePath);
-            this.messageQueue.Formatter = new XmlMessageFormatter(new[] { typeof(QueueEntity) });
+            this.messageQueue.Formatter = new XmlMessageFormatter(new[] { typeof(EntityType) });
         }
         #endregion
 

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RLM.Core", "RLM.Core\RLM.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchEngine.Test.ConsoleApp", "SearchEngine.Test.Console\SearchEngine.Test.ConsoleApp.csproj", "{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchEngine.Data", "SearchEngine.Data\SearchEngine.Data.csproj", "{B5D2EF18-CDCC-4736-B730-5938E152829F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,16 @@ Global
 		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Release|Mixed Platforms.Build.0 = Release|x86
 		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Release|x86.ActiveCfg = Release|x86
 		{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}.Release|x86.Build.0 = Release|x86
+		{B5D2EF18-CDCC-4736-B730-5938E152829F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D2EF18-CDCC-4736-B730-5938E152829F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D2EF18-CDCC-4736-B730-5938E152829F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B5D2EF18-CDCC-4736-B730-5938E152829F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B5D2EF18-CDCC-4736-B730-5938E152829F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5D2EF18-CDCC-4736-B730-5938E152829F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D2EF18-CDCC-4736-B730-5938E152829F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D2EF18-CDCC-4736-B730-5938E152829F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B5D2EF18-CDCC-4736-B730-5938E152829F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B5D2EF18-CDCC-4736-B730-5938E152829F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

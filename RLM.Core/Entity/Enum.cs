@@ -5,6 +5,21 @@ using System.Text;
 
 namespace RLM.Core.Entity
 {
+    public enum StatusCode
+    {
+        None,
+        Fresh,
+        Queue,
+        Processing,
+        Done,
+
+        Error=100,
+        Timeout,
+        UnReachable,
+        Exception,
+        GenericException=200
+    }
+
     public enum ConfigFieldMessageQueue
     {
         QueuePath,

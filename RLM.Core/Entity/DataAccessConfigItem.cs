@@ -13,7 +13,7 @@ namespace RLM.Core.Entity
         #endregion
 
         #region Properties
-        public string EntityClassName { get; set; }
+        public string Key { get; set; }
          [XmlElement(IsNullable = true)]
         public string DataWriter { get; set; }
          [XmlElement(IsNullable = true)]

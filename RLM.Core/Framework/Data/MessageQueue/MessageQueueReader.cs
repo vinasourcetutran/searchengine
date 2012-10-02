@@ -7,13 +7,13 @@ using RLM.Core.Entity;
 
 namespace RLM.Core.Framework.Data.MessageQueue
 {
-    public class MessageQueueReader<EntityType>:BaseDataReader<EntityType, string> where EntityType: BaseEntity, new()
+    public class MessageQueueReader<EntityType>:BaseDataReader<EntityType> where EntityType: IEntity, new()
     {
         #region Variable
         IConfigurable config;
         System.Messaging.MessageQueue messageQueue;
         object getObj = new object();
-        Queue<QueueEntity> queue;
+        Queue<EntityType> queue;
         #endregion
 
         #region Constructor
@@ -45,13 +45,13 @@ namespace RLM.Core.Framework.Data.MessageQueue
             if (this.queue.Count <= 0) { return default(EntityType); }
             lock (getObj)
             {
-                QueueEntity entity = this.queue.Dequeue();
+                EntityType entity = this.queue.Dequeue();
                 if (this.queue.Count < this.MaxQueueSize && !this.IsWaitingForMessage)
                 {
                     this.messageQueue.BeginReceive();
                     this.IsWaitingForMessage = true;
                 }
-                return entity.GetData<EntityType>();
+                return entity;
             }
             
         }
@@ -71,10 +71,10 @@ namespace RLM.Core.Framework.Data.MessageQueue
             int.TryParse(config.GetKey(ConfigFieldMessageQueue.MaxQueueSize.ToString(),"").ToString(), out maxQueueSize);
             this.MaxQueueSize = maxQueueSize;
 
-            this.queue = new Queue<QueueEntity>();
+            this.queue = new Queue<EntityType>();
 
             this.messageQueue = new System.Messaging.MessageQueue(this.QueuePath);
-            this.messageQueue.Formatter = new XmlMessageFormatter(new[] { typeof(QueueEntity) });
+            this.messageQueue.Formatter = new XmlMessageFormatter(new[] { typeof(BaseEntityObject) });
             this.messageQueue.ReceiveCompleted  +=new ReceiveCompletedEventHandler(messageQueue_ReceiveCompleted);
             this.messageQueue.BeginReceive();
             this.IsWaitingForMessage = true;
@@ -82,7 +82,7 @@ namespace RLM.Core.Framework.Data.MessageQueue
         private void messageQueue_ReceiveCompleted(object sender, ReceiveCompletedEventArgs e)
         {
             this.IsWaitingForMessage = false;
-            QueueEntity entity = (QueueEntity)e.Message.Body;
+            EntityType entity = (EntityType)e.Message.Body;
             this.queue.Enqueue(entity);
             if (this.queue.Count < this.MaxQueueSize && !this.IsWaitingForMessage)
             {

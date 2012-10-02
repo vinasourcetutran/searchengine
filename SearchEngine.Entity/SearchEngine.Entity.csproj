@@ -56,12 +56,16 @@
     <Compile Include="Country.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Bot\HtmlPage.cs" />
+    <Compile Include="Html\HtmlMeta.cs" />
+    <Compile Include="Html\HtmlPage.cs" />
+    <Compile Include="Html\HtmlUrl.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedule\Enum.cs" />
     <Compile Include="Schedule\ScheduleItem.cs" />
     <Compile Include="TestEntity.cs" />
     <Compile Include="Test\ESBMessage.cs" />
+    <Compile Include="Test\TestDatabaseWriterQueueItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RLM.Core\RLM.Core.csproj">

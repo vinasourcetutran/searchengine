@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using RLM.Core.Framework.Workflow;
 using RLM.Core.Entity;
-using SearchEngine.WindowService.Workflow;
 
-namespace SearchEngine.WindowService
+namespace SearchEngine.WindowService.Workflow.Url
 {
-    public class WorkflowBuilder
+    public class UrlWorkflow : IWorkflow<BaseEntityObject>
     {
-        public static RLM.Core.Framework.Workflow.WorflowActivity<RLM.Core.Entity.BaseEntityObject> CreateWorkflow()
+
+        public WorflowActivity<BaseEntityObject> BuildWorkflow()
         {
             WorflowActivity<BaseEntityObject> activity = new WorflowActivity<BaseEntityObject>();
-            activity.AddChild(new TestActivity());
+            activity.AddChild(new UrlCrawlerActivity());
             ///TO DO
             return activity;
         }

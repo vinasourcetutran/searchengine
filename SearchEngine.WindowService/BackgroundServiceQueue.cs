@@ -24,16 +24,16 @@ namespace SearchEngine.WindowService
 
         #region Properties
         public static QueueIEntity Entity { get; set; }
-        public static IDictionary<string, IDataReader<BaseEntity, string>> DataReader { get; set; }
-        public static IDictionary<string, IDataWriter<BaseEntity, string>> DataWriter { get; set; }
+        public static IDictionary<string, IDataReader<BaseEntityObject>> DataReader { get; set; }
+        public static IDictionary<string, IDataWriter<BaseEntityObject>> DataWriter { get; set; }
         #endregion
 
         #region Public methods
         public static void InitDataReaderAndWriter()
         {
             //var forceLoad = typeof(BaseDataReader<BaseEntity, string>);
-            if (DataReader == null) { DataReader = new Dictionary<string, IDataReader<BaseEntity, string>>(5); }
-            if (DataWriter == null) { DataWriter = new Dictionary<string, IDataWriter<BaseEntity, string>>(5); }
+            if (DataReader == null) { DataReader = new Dictionary<string, IDataReader<BaseEntityObject>>(5); }
+            if (DataWriter == null) { DataWriter = new Dictionary<string, IDataWriter<BaseEntityObject>>(5); }
 
             DataAccessConfigs configs = XmlHelper.Deserialize<DataAccessConfigs>(Configuration.Configuration.GetInstance().BackgroundService.DataAccessConfigFile);
             foreach(DataAccessConfigItem item in configs)
@@ -50,14 +50,14 @@ namespace SearchEngine.WindowService
                 if(item.IsReader)
                 {
 
-                    IDataReader<BaseEntity, string> reader = Activator.CreateInstance(Type.GetType(item.DataReader), config) as IDataReader<BaseEntity, string>;
-                    DataReader[item.EntityClassName]= reader;
+                    IDataReader<BaseEntityObject> reader = Activator.CreateInstance(Type.GetType(item.DataReader), config) as IDataReader<BaseEntityObject>;
+                    DataReader[item.Key]= reader;
                 }
 
                 if(item.IsWriter)
                 {
-                    IDataWriter<BaseEntity, string> writer = (IDataWriter<BaseEntity, string>)Activator.CreateInstance(Type.GetType(item.DataWriter), config);
-                    DataWriter[item.EntityClassName]= writer;
+                    IDataWriter<BaseEntityObject> writer = (IDataWriter<BaseEntityObject>)Activator.CreateInstance(Type.GetType(item.DataWriter), config);
+                    DataWriter[item.Key]= writer;
                 }
             }
 

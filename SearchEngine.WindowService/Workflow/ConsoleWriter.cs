@@ -8,7 +8,7 @@ using RLM.Core.Framework.Data;
 
 namespace SearchEngine.WindowService.Workflow
 {
-    public class ConsoleWriter : BaseDataWriter<IEntity, string>
+    public class ConsoleWriter : BaseDataWriter<IEntity>
     {
         #region Variables
         #endregion

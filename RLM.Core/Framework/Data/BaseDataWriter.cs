@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RLM.Core.Entity;
 
 namespace RLM.Core.Framework.Data
 {
-    public class BaseDataWriter<EntityType, IdType> : IDataWriter<EntityType, IdType>
+    public class BaseDataWriter<EntityType> : IDataWriter<EntityType> where EntityType:IEntity
     {
         #region Variables
         #endregion
@@ -28,7 +29,7 @@ namespace RLM.Core.Framework.Data
             throw new NotImplementedException();
         }
 
-        public virtual bool Delete(IdType id)
+        public virtual bool Delete(EntityType entity)
         {
             throw new NotImplementedException();
         }

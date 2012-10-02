@@ -26,14 +26,14 @@ namespace SearchEngine.WindowService
                 Logger.Info("Start thread #" + param.Index);
                 while (WindowServiceHelper.IsRunning)
                 {
-                    IEntity entity = param.DataReader.Get();// BackgroundServiceQueue.Entity.Dequeue();
+                    BaseEntityObject entity = param.DataReader.Get();// BackgroundServiceQueue.Entity.Dequeue();
                     if (entity == null)
                     {
-                        Logger.Info("Thread #{0} waits for data ...", arg);
-                        Thread.Sleep(1500);
+                        Logger.Info("Thread #{0} ({1}/{2}) waits for data ...", param.Index, param.Workflow.GetType().FullName, param.DataReader.GetType().FullName);
+                        Thread.Sleep(5000);
                         continue;
                     }
-                    WorflowActivity<IEntity> activity = param.Workflow.BuildWorkflow(entity);// WorkflowBuilder.CreateWorkflow(entity);
+                    WorflowActivity<BaseEntityObject> activity = param.Workflow.BuildWorkflow();// WorkflowBuilder.CreateWorkflow(entity);
                     activity.Excute(entity);
                 }
             }
@@ -54,19 +54,19 @@ namespace SearchEngine.WindowService
                 foreach (BackgroundServiceWorkflow item in workflows)
                 {
                     if (!item.Enable) { continue; }
-                    RLM.Core.Framework.Data.IDataReader<BaseEntity, string> reader = null;
-                    if (BackgroundServiceQueue.DataReader.ContainsKey(item.EntityClassName))
+                    RLM.Core.Framework.Data.IDataReader<BaseEntityObject> reader = null;
+                    if (BackgroundServiceQueue.DataReader.ContainsKey(item.Key))
                     {
-                        reader = BackgroundServiceQueue.DataReader[item.EntityClassName];
+                        reader = BackgroundServiceQueue.DataReader[item.Key];
                     }
 
-                    RLM.Core.Framework.Data.IDataWriter<BaseEntity, string> writer = null;
-                    if (BackgroundServiceQueue.DataWriter.ContainsKey(item.EntityClassName))
+                    RLM.Core.Framework.Data.IDataWriter<BaseEntityObject> writer = null;
+                    if (BackgroundServiceQueue.DataWriter.ContainsKey(item.Key))
                     {
-                        reader = BackgroundServiceQueue.DataReader[item.EntityClassName];
+                        reader = BackgroundServiceQueue.DataReader[item.Key];
                     }
 
-                    IWorkflow<IEntity> workflow = ClassHelper.CreateInstance<IWorkflow<IEntity>>(item.Workflow);
+                    IWorkflow<BaseEntityObject> workflow = ClassHelper.CreateInstance<IWorkflow<BaseEntityObject>>(item.Workflow);
                     int maxThread = item.MaxThread;
                     for (var index = 0; index < maxThread; index++)
                     {

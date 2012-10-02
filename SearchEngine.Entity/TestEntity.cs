@@ -22,20 +22,12 @@ namespace SearchEngine.Bot.Entity
         #region Private methods
         #endregion
 
-        public override string EntityId
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         public override string EntityName
         {
             get { return this.Name; }
         }
 
-        public override string EntityType
-        {
-            get { throw new NotImplementedException(); }
-        }
+        
         
     }
 }

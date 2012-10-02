@@ -7,7 +7,7 @@ using RLM.Core.Framework.Workflow;
 
 namespace SearchEngine.WindowService.Workflow
 {
-    public class WorkflowTest : IWorkflow<IEntity>
+    public class WorkflowTest : IWorkflow<BaseEntityObject>
     {
         #region Variables
         #endregion
@@ -20,9 +20,9 @@ namespace SearchEngine.WindowService.Workflow
         #endregion
 
         #region Public methods
-        public WorflowActivity<IEntity> BuildWorkflow(IEntity item)
+        public WorflowActivity<BaseEntityObject> BuildWorkflow()
         {
-            WorflowActivity<IEntity> activity = new WorflowActivity<IEntity>();
+            WorflowActivity<BaseEntityObject> activity = new WorflowActivity<BaseEntityObject>();
             activity.AddChild(new TestActivity());
             ///TO DO
             return activity;

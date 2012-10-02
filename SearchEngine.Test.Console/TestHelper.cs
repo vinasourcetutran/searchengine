@@ -11,11 +11,53 @@ using RLM.Core.Entity;
 using RLM.Core.Framework.Utility;
 using System.Xml.Serialization;
 using System.Xml;
+using SearchEngine.Data;
+using SearchEngine.Entity.Html;
+using SearchEngine.Entity;
+using SearchEngine.Data.Queue;
+using SearchEngine.Entity.Test;
 
 namespace SearchEngine.Test.ConsoleApp
 {
     public class TestHelper
     {
+        public static void TestDatabaseWriterQueue()
+        {
+            IConfigurable config = new ConfigHash();
+            config.Add(ConfigFieldDatabaseQueue.MaxQueueSize.ToString(), 3);
+
+            IDataWriter<TestDatabaseWriterQueueItem> writer = new BaseDatabaseQueueWriter<TestDatabaseWriterQueueItem>(config);
+
+            //Thread th = new Thread(ReadFromQueue);
+            //th.Start();
+            string text = "";
+            while (text != "exit")
+            {
+                text = Console.ReadLine();
+                TestDatabaseWriterQueueItem entity = new TestDatabaseWriterQueueItem();
+                entity.Name = text;
+                entity.NextRun = DateTime.UtcNow;
+                entity.Status = (int)StatusCode.Fresh;
+                writer.InsertOrUpdate(entity);
+            }
+        }
+
+        public static void TestDatabaseReaderQueue()
+        {
+            IConfigurable config = new ConfigHash();
+            config.Add(ConfigFieldDatabaseQueue.MaxQueueSize.ToString(), 3);
+
+            IDataReader<TestDatabaseWriterQueueItem> reader = new BaseDatabaseQueueReader<TestDatabaseWriterQueueItem,string>(config);
+
+            //Thread th = new Thread(ReadFromQueue);
+            //th.Start();
+            TestDatabaseWriterQueueItem item = reader.Get();
+            while (item!=null)
+            {
+                Console.WriteLine(item.EntityName);
+                item = reader.Get();
+            }
+        }
         public static void TestMessageQueue()
         {
             IConfigurable config = new ConfigHash();
@@ -24,7 +66,7 @@ namespace SearchEngine.Test.ConsoleApp
             config.Add(ConfigFieldMessageQueue.QueuePath.ToString(), @".\private$\receiver1");
             config.Add(ConfigFieldMessageQueue.MaxQueueSize.ToString(), 10);
 
-            IDataWriter<TestEntity,string> writer = new MessageQueueWriter<TestEntity>(config);
+            IDataWriter<BaseEntityObject> writer = new MessageQueueWriter<BaseEntityObject>(config);
 
             //Thread th = new Thread(ReadFromQueue);
             //th.Start();
@@ -32,7 +74,10 @@ namespace SearchEngine.Test.ConsoleApp
             while (text!="exit")
             {
                 text = Console.ReadLine();
-                writer.InsertOrUpdate(new TestEntity() { Name=text+ DateTime.Now.ToString()});
+                TestEntity entity = new TestEntity() { Name = text};
+                BaseEntityObject queEntity = new BaseEntityObject();
+                queEntity.SetData<TestEntity>(entity);
+                writer.InsertOrUpdate(queEntity);
             }
         }
 
@@ -44,12 +89,14 @@ namespace SearchEngine.Test.ConsoleApp
             config.Add(ConfigFieldMessageQueue.QueuePath.ToString(), @".\private$\receiver1");
             config.Add(ConfigFieldMessageQueue.MaxQueueSize.ToString(), 10);
 
-            IDataReader<TestEntity, string> reader = new MessageQueueReader<TestEntity>(config);
+            IDataReader<BaseEntityObject> reader = new MessageQueueReader<BaseEntityObject>(config);
 
             while (true)
             {
-                BaseEntity entity = reader.Get();
-                Console.WriteLine("Get from queue:"+ (entity!=null?entity.EntityName: "Null"));
+                BaseEntityObject entity = reader.Get();
+                if (entity == null) { continue; }
+                TestEntity test = entity.GetData<TestEntity>();
+                Console.WriteLine("Get from queue:{0}/{1}",test.Name, test.EntityId);
                 Thread.Sleep(2000);
             }
         }
@@ -60,7 +107,7 @@ namespace SearchEngine.Test.ConsoleApp
             foreach (DataAccessConfigItem item in config)
             {
                 Console.WriteLine("Entity name:{0}, Data reader:{1}, Data writer:{2}, Is reader:{3}, is writer:{4}, param class name:{5}, param value:{6}",
-                    item.EntityClassName,
+                    item.Key,
                     item.DataReader,
                     item.DataWriter,
                     item.IsWriter,
@@ -75,7 +122,7 @@ namespace SearchEngine.Test.ConsoleApp
         {
             DataAccessConfigs config = new DataAccessConfigs();
             config.Add(new DataAccessConfigItem() {
-                EntityClassName = "EntityClassName",
+                Key = "EntityClassName",
                 DataWriter = "DataWriter",
                 DataReader = "DataReader",
                 IsReader=true,
@@ -98,7 +145,7 @@ namespace SearchEngine.Test.ConsoleApp
 
             string path = @"D:\Project\SearchEngine\trunk\SearchEngine.Test.Console\Workflow.xml";
             BackgroundServiceWorkflows workflows = new BackgroundServiceWorkflows();
-            workflows.Add(new BackgroundServiceWorkflow() { EntityClassName="abc",MaxThread=10,Enable=true,Workflow="edf"});
+            workflows.Add(new BackgroundServiceWorkflow() { Key="abc",MaxThread=10,Enable=true,Workflow="edf"});
 
             XmlSerializer serializer = new XmlSerializer(typeof(BackgroundServiceWorkflows));
 
@@ -115,7 +162,7 @@ namespace SearchEngine.Test.ConsoleApp
             foreach (BackgroundServiceWorkflow item in config)
             {
                 Console.WriteLine("Entity name:{0}, Data reader:{1}, Data writer:{2}, Is reader:{3}",
-                    item.EntityClassName,
+                    item.Key,
                     item.Enable,
                     item.MaxThread,
                     item.Workflow
@@ -127,7 +174,7 @@ namespace SearchEngine.Test.ConsoleApp
         {
             string dataReader = "";
             MessageQueueReader<TestEntity> reader = new MessageQueueReader<SearchEngine.Bot.Entity.TestEntity>(new ConfigHash());
-            IDataReader<BaseEntity, string> t = reader as IDataReader<BaseEntity, string>;
+            IDataReader<BaseEntity> t = reader as IDataReader<BaseEntity>;
         }
 
         internal static void CreateDataReader()
@@ -140,8 +187,17 @@ namespace SearchEngine.Test.ConsoleApp
                 Type type=Type.ReflectionOnlyGetType("SearchEngine.Bot.Entity.TestEntity",false, true);
 
 
-                IDataReader<BaseEntity, string> reader = Activator.CreateInstance(Type.GetType("SearchEngine.WindowService.Workflow.ConsoleReader,SearchEngine.WindowService"), config) as IDataReader<BaseEntity, string>;
+                IDataReader<BaseEntity> reader = Activator.CreateInstance(Type.GetType("SearchEngine.WindowService.Workflow.ConsoleReader,SearchEngine.WindowService"), config) as IDataReader<BaseEntity>;
                 Console.WriteLine("Init data reader:{0}", reader==null?"Null":"Not null");
+        }
+
+        internal static void AddNewHtmlPage()
+        {
+            HtmlPage page = new HtmlPage();
+            page.Title = "test page";
+
+            SearchEngineContext.Context.HtmlPage.Add(page);
+            SearchEngineContext.Context.SaveChanges();
         }
     }
 }

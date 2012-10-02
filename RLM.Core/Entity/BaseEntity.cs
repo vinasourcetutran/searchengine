@@ -12,7 +12,7 @@ namespace RLM.Core.Entity
 
         public virtual string EntityId
         {
-            get { throw new NotImplementedException(); }
+            get { return Guid.NewGuid().ToString(); }
         }
 
         public virtual string EntityName
@@ -22,7 +22,7 @@ namespace RLM.Core.Entity
 
         public virtual string EntityType
         {
-            get { throw new NotImplementedException(); }
+            get { return this.GetType().FullName; }
         }
     }
 }

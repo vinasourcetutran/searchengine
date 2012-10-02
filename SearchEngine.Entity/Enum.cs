@@ -5,6 +5,11 @@ using System.Text;
 
 namespace SearchEngine.Entity
 {
+    public enum ConfigFieldDatabaseQueue
+    {
+        MaxQueueSize
+    }
+
     public enum ResponseFormat
     {
         NONE,

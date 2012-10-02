@@ -7,11 +7,21 @@ using System.IO;
 namespace RLM.Core.Entity
 {
     [Serializable]
-    public class QueueEntity
+    public class BaseEntityObject:IEntity
     {
+        #region Variables
+        string entityName;
+        string entityType;
+        string entityId;
+        #endregion
+
         public string Data { get; set; }
-        public void SetData<T>(T item)
+        public void SetData<T>(T item) where T:IEntity
         {
+            this.entityId = item.EntityId;
+            this.entityName = item.EntityName;
+            this.entityType = item.EntityType;
+
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             System.IO.StringWriter writer = new System.IO.StringWriter(sb);
             System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(typeof(T));
@@ -24,6 +34,21 @@ namespace RLM.Core.Entity
             System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(typeof(T));
             T item = (T)x.Deserialize(reader);
             return item;
+        }
+
+        public virtual string EntityId
+        {
+            get { return this.entityId; }
+        }
+
+        public virtual string EntityName
+        {
+            get { return this.entityName; }
+        }
+
+        public virtual string EntityType
+        {
+            get { return this.entityType; }
         }
     }
 }

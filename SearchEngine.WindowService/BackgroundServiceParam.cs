@@ -14,9 +14,9 @@ namespace SearchEngine.WindowService
 
         #region Properties
         public int Index { get; set; }
-        public IWorkflow<IEntity> Workflow { get; set; }
-        public RLM.Core.Framework.Data.IDataReader<BaseEntity, string> DataReader { get; set; }
-        public RLM.Core.Framework.Data.IDataWriter<BaseEntity, string> DataWriter { get; set; }
+        public IWorkflow<BaseEntityObject> Workflow { get; set; }
+        public RLM.Core.Framework.Data.IDataReader<BaseEntityObject> DataReader { get; set; }
+        public RLM.Core.Framework.Data.IDataWriter<BaseEntityObject> DataWriter { get; set; }
         #endregion
 
         #region Constructor

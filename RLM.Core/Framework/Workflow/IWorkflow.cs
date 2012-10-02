@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RLM.Core.Entity;
 
 namespace RLM.Core.Framework.Workflow
 {
-    public interface IWorkflow<T>
+    public interface IWorkflow<T> where T:IEntity
     {
         #region Variables
         #endregion
@@ -17,7 +18,7 @@ namespace RLM.Core.Framework.Workflow
         #endregion
 
         #region Public methods
-        WorflowActivity<T> BuildWorkflow(T item);
+        WorflowActivity<T> BuildWorkflow();
         #endregion
 
         #region Private methods

@@ -2,21 +2,18 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5C1F3772-94DD-4A0C-B17C-F01F7A37B989}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{B5D2EF18-CDCC-4736-B730-5938E152829F}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SearchEngine.Test.ConsoleApp</RootNamespace>
-    <AssemblyName>SearchEngine.Test.ConsoleApp</AssemblyName>
+    <RootNamespace>SearchEngine.Data</RootNamespace>
+    <AssemblyName>SearchEngine.Data</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,8 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -48,54 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Queue\BaseDatabaseQueueReader.cs" />
+    <Compile Include="Queue\BaseDatabaseQueueWriter.cs" />
+    <Compile Include="SearchEngineContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestClass.cs" />
-    <Compile Include="TestDataReader.cs" />
-    <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RLM.Core\RLM.Core.csproj">
       <Project>{91B9ED72-B2C7-41DC-ADDD-621FB830849A}</Project>
       <Name>RLM.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SearchEngine.Configuration\SearchEngine.Configuration.csproj">
-      <Project>{12E1CD8E-AF21-4F23-913A-8C50F4FCAE0E}</Project>
-      <Name>SearchEngine.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SearchEngine.Data\SearchEngine.Data.csproj">
-      <Project>{B5D2EF18-CDCC-4736-B730-5938E152829F}</Project>
-      <Name>SearchEngine.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SearchEngine.Entity\SearchEngine.Entity.csproj">
       <Project>{2F55DEDF-2B58-4F1B-B23B-DDB5A2512FFF}</Project>
       <Name>SearchEngine.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SearchEngine.ESB\SearchEngine.ESB.csproj">
-      <Project>{10999A22-37FE-4BD5-868F-5478B055605F}</Project>
-      <Name>SearchEngine.ESB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SearchEngine.Service\SearchEngine.Service.csproj">
-      <Project>{7518282A-8FB2-430C-9E56-4DADC42AC256}</Project>
-      <Name>SearchEngine.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SearchEngine.WindowService\SearchEngine.WindowService.csproj">
-      <Project>{2D4ED962-9F5A-4CBC-AF9F-5B4B196A37D9}</Project>
-      <Name>SearchEngine.WindowService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SearchEngine\SearchEngine.csproj">
-      <Project>{96E9C9C4-1CA7-4656-A23A-704812E9DA22}</Project>
-      <Name>SearchEngine</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="configs\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DataAccess.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

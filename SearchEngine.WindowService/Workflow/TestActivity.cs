@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RLM.Core.Framework.Log;
+using SearchEngine.Bot.Entity;
+using RLM.Core.Entity;
 
 namespace SearchEngine.WindowService.Workflow
 {
-    public class TestActivity : RLM.Core.Framework.Workflow.WorflowActivity<RLM.Core.Entity.IEntity>
+    public class TestActivity : RLM.Core.Framework.Workflow.WorflowActivity<BaseEntityObject>
     {
         #region Variables
         #endregion
@@ -24,7 +26,8 @@ namespace SearchEngine.WindowService.Workflow
         }
         protected override void Excute()
         {
-            Logger.Info("item {0} was processed at {1}.",this.Item.EntityName, DateTime.Now.ToString());
+            TestEntity entity = Item.GetData<TestEntity>();
+            Logger.Info("item {0} was processed with id {1}.",entity.EntityName, entity.EntityId);
         }
         #endregion
 

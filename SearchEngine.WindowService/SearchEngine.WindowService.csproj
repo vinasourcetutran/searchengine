@@ -108,6 +108,8 @@
     <Compile Include="Workflow\TestActivity.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Workflow\Url\UrlCrawlerActivity.cs" />
+    <Compile Include="Workflow\Url\UrlWorkflow.cs" />
     <Compile Include="Workflow\WorkflowTest.cs" />
   </ItemGroup>
   <ItemGroup>

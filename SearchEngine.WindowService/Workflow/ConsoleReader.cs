@@ -8,7 +8,7 @@ using RLM.Core.Entity;
 
 namespace SearchEngine.WindowService.Workflow
 {
-    public class ConsoleReader : MessageQueueReader<SearchEngine.Bot.Entity.TestEntity>
+    public class ConsoleReader : MessageQueueReader<BaseEntityObject>
     {
         #region Variables
         #endregion

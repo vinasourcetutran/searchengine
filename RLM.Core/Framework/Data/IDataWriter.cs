@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using RLM.Core.Entity;
 
 namespace RLM.Core.Framework.Data
 {
-    public interface IDataWriter<EntityType, IdType>
+    public interface IDataWriter<EntityType> where EntityType:IEntity
     {
         void InsertOrUpdate(IList<EntityType> items);
         void InsertOrUpdate(EntityType item);
-        bool Delete(IdType id);
+        bool Delete(EntityType item);
     }
 }

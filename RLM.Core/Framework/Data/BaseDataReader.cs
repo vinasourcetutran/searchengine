@@ -6,8 +6,7 @@ using RLM.Core.Entity;
 
 namespace RLM.Core.Framework.Data
 {
-    public class BaseDataReader<EntityType, IdType> : IDataReader<EntityType, IdType> where EntityType : BaseEntity
-        where IdType : IComparable
+    public class BaseDataReader<EntityType> : IDataReader<EntityType> where EntityType : IEntity
     {
         #region Variables
         #endregion
@@ -30,7 +29,7 @@ namespace RLM.Core.Framework.Data
             throw new NotImplementedException();
         }
 
-        public virtual EntityType Get(IdType id)
+        public virtual EntityType Get(string item)
         {
             throw new NotImplementedException();
         }

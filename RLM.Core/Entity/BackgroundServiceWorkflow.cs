@@ -13,7 +13,7 @@ namespace RLM.Core.Entity
         #endregion
 
         #region Properties
-        public string EntityClassName { get; set; }
+        public string Key { get; set; }
         public string Workflow { get; set; }
         [XmlAttribute]
         public int MaxThread { get; set; }
